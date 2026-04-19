@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_dashboard.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0F0F1A"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="VEHICLE DASHBOARD"
+            android:textColor="#00D4AA"
+            android:textSize="18sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.15"/>
+
+        <TextView
+            android:id="@+id/tv_connection_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connecting..."
+            android:textColor="#9CA3AF"
+            android:textSize="12sp"
+            android:fontFamily="monospace"/>
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2D2D44"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Gauges Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <!-- Speedometer -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <com.vehicle.someip.ui.GaugeView
+                android:id="@+id/gauge_speed"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_speed_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingTop="4dp"/>
+        </LinearLayout>
+
+        <!-- Gear + Info Center -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Gear display -->
+            <TextView
+                android:id="@+id/tv_gear"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:text="P"
+                android:textColor="#00D4AA"
+                android:textSize="36sp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:background="@drawable/gear_bg"/>
+
+            <View android:layout_width="0dp" android:layout_height="16dp"/>
+
+            <!-- Coolant temp -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COOLANT"
+                android:textColor="#6B7280"
+                android:textSize="10sp"
+                android:fontFamily="monospace"/>
+            <TextView
+                android:id="@+id/tv_coolant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25.0°C"
+                android:textColor="#FF9F0A"
+                android:textSize="16sp"
+                android:fontFamily="monospace"/>
+
+            <View android:layout_width="0dp" android:layout_height="12dp"/>
+
+            <!-- RPM text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RPM"
+                android:textColor="#6B7280"
+                android:textSize="10sp"
+                android:fontFamily="monospace"/>
+            <TextView
+                android:id="@+id/tv_rpm_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="800"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:fontFamily="monospace"/>
+        </LinearLayout>
+
+        <!-- Tachometer -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <com.vehicle.someip.ui.GaugeView
+                android:id="@+id/gauge_rpm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!-- Fuel bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⛽ "
+                    android:textSize="14sp"/>
+
+                <ProgressBar
+                    android:id="@+id/pb_fuel"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressTint="#00D4AA"
+                    android:progressBackgroundTint="#2D2D44"/>
+
+                <TextView
+                    android:id="@+id/tv_fuel_value"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    android:text="100%"
+                    android:textColor="#9CA3AF"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Status bar -->
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Waiting for data..."
+        android:textColor="#6B7280"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:padding="8dp"
+        android:background="#1A1A2E"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2D2D44"
+        android:layout_marginVertical="12dp"/>
+
+    <!-- Controls Section -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONTROLS"
+        android:textColor="#6B7280"
+        android:textSize="10sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.2"
+        android:paddingBottom="8dp"/>
+
+    <!-- Throttle -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="THROTTLE"
+            android:textColor="#9CA3AF"
+            android:textSize="11sp"
+            android:fontFamily="monospace"/>
+
+        <SeekBar
+            android:id="@+id/sb_throttle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:thumbTint="#00D4AA"
+            android:progressTint="#00D4AA"/>
+    </LinearLayout>
+
+    <!-- Brake -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="BRAKE"
+            android:textColor="#9CA3AF"
+            android:textSize="11sp"
+            android:fontFamily="monospace"/>
+
+        <SeekBar
+            android:id="@+id/sb_brake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:thumbTint="#FF3B30"
+            android:progressTint="#FF3B30"/>
+    </LinearLayout>
+
+    <!-- Emergency Stop -->
+    <Button
+        android:id="@+id/btn_emergency"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="⚠ EMERGENCY STOP"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF3B30"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"
+        android:alpha="0.5"/>
+
+</LinearLayout>

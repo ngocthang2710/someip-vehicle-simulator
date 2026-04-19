@@ -1,0 +1,31 @@
+// Android.bp cho JNI bridge library
+// Đặt tại: packages/apps/VehicleDashboard/jni/Android.bp
+
+cc_library_shared {
+    name: "libsomeip_bridge",
+    srcs: [
+        "someip_bridge.cpp",
+        "../../vendor/vehicle/someip-server/src/VehicleService.cpp",
+    ],
+    shared_libs: [
+        "libvsomeip3",
+        "libvsomeip3-cfg",
+        "liblog",
+        "libandroid",
+    ],
+    static_libs: [
+        "libboost_system",
+        "libboost_thread",
+    ],
+    cflags: [
+        "-std=c++17",
+        "-DANDROID",
+        "-fvisibility=hidden",
+    ],
+    include_dirs: [
+        "vendor/covesa/vsomeip/interface",
+        "packages/apps/VehicleDashboard/vendor/vehicle/someip-server/src",
+    ],
+    stl: "c++_shared",
+    sdk_version: "current",
+}

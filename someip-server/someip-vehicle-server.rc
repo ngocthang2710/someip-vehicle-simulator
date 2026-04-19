@@ -1,0 +1,14 @@
+# someip-vehicle-server.rc
+# Đặt tại: vendor/vehicle/someip-server/someip-vehicle-server.rc
+
+service someip-vehicle-server /vendor/bin/someip-vehicle-server
+    class late_start
+    user system
+    group system net_raw net_admin
+    disabled
+    oneshot
+
+# Start sau khi network up
+on property:sys.boot_completed=1
+    setprop VSOMEIP_CONFIGURATION /vendor/etc/vsomeip_server.json
+    start someip-vehicle-server

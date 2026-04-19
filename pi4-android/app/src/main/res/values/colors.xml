@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background -->
+    <color name="bg_primary">#0F0F1A</color>
+    <color name="bg_secondary">#1A1A2E</color>
+    <color name="bg_card">#2D2D44</color>
+
+    <!-- Accent -->
+    <color name="accent_teal">#00D4AA</color>
+    <color name="accent_orange">#FF6B35</color>
+    <color name="accent_red">#FF3B30</color>
+    <color name="accent_amber">#FF9F0A</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#9CA3AF</color>
+    <color name="text_muted">#6B7280</color>
+
+    <!-- Gauge -->
+    <color name="gauge_active">#00D4AA</color>
+    <color name="gauge_redzone">#FF3B30</color>
+    <color name="gauge_track">#2D2D44</color>
+    <color name="needle">#FF6B35</color>
+</resources>

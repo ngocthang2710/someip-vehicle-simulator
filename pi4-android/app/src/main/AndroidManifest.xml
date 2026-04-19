@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vehicle.someip"
+    android:sharedUserId="android.uid.system">
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!-- Car API permissions -->
+    <uses-permission android:name="android.car.permission.CAR_SPEED"/>
+    <uses-permission android:name="android.car.permission.CAR_ENGINE_DETAILED"/>
+    <uses-permission android:name="android.car.permission.CAR_POWERTRAIN"/>
+    <uses-permission android:name="android.car.permission.CAR_INFO"/>
+
+    <!-- Requires Android Automotive OS -->
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="false"/>
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@android:style/Theme.Material.NoTitleBar.Fullscreen"
+        android:allowBackup="false"
+        android:persistent="true">
+
+        <!-- Main Dashboard Activity -->
+        <activity
+            android:name=".ui.DashboardActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </activity>
+
+        <!-- SOME/IP Background Service -->
+        <service
+            android:name=".service.SomeIpService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:persistent="true">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Vehicle SOME/IP data ingestion"/>
+        </service>
+
+        <!-- Auto-start on boot -->
+        <receiver
+            android:name=".service.BootReceiver"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

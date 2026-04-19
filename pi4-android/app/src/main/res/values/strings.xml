@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vehicle Dashboard</string>
+    <string name="label_speed">SPEED</string>
+    <string name="label_rpm">RPM</string>
+    <string name="label_gear">GEAR</string>
+    <string name="label_fuel">FUEL</string>
+    <string name="label_coolant">COOLANT</string>
+    <string name="btn_emergency_stop">⚠ EMERGENCY STOP</string>
+    <string name="status_connecting">Connecting to SOME/IP...</string>
+    <string name="status_connected">SOME/IP Connected ✓</string>
+    <string name="status_disconnected">SOME/IP Disconnected ✗</string>
+</resources>

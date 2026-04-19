@@ -1,0 +1,54 @@
+// Android.bp — VehicleDashboard App
+// Đặt tại: packages/apps/VehicleDashboard/Android.bp
+
+android_app {
+    name: "VehicleDashboard",
+    srcs: [
+        "app/src/main/java/**/*.java",
+    ],
+    resource_dirs: [
+        "app/src/main/res",
+    ],
+    manifest: "app/src/main/AndroidManifest.xml",
+
+    // JNI library
+    jni_libs: ["libsomeip_bridge"],
+    jni_uses_sdk_apis: true,
+
+    // Car API
+    libs: [
+        "android.car",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+    ],
+
+    // System app — install vào /system/app/
+    certificate: "platform",
+    privileged: true,
+    platform_apis: true,
+
+    // Compile SDK
+    sdk_version: "",  // platform SDK (blank = latest)
+    min_sdk_version: "34",  // Android 14+ (API 34)
+
+    // Optimize
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    product_specific: false,
+    vendor: false,
+    system_ext_specific: false,
+
+    required: [
+        "libsomeip_bridge",
+        "someip-vehicle-server",
+    ],
+}
+
+// SELinux policy
+// se_policy_conf {
+//     name: "vehicle_dashboard_policy",
+//     srcs: ["sepolicy/*.te"],
+// }

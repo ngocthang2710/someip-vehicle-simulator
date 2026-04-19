@@ -1,0 +1,44 @@
+// Android.bp — SOME/IP Vehicle Server
+// Đặt tại: vendor/vehicle/someip-server/Android.bp
+
+cc_binary {
+    name: "someip-vehicle-server",
+    srcs: [
+        "src/main.cpp",
+        "src/VehicleService.cpp",
+    ],
+    shared_libs: [
+        "libvsomeip3",
+        "libvsomeip3-cfg",
+        "liblog",
+        "libbase",
+        "libutils",
+    ],
+    static_libs: [
+        "libboost_system",
+        "libboost_thread",
+        "libboost_log",
+        "libboost_filesystem",
+    ],
+    cflags: [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-DVSOMEIP_ENABLE_SIGNAL_HANDLING=1",
+        "-DANDROID",
+    ],
+    include_dirs: [
+        "vendor/covesa/vsomeip/interface",
+        "external/boost/libs/system/include",
+        "external/boost/libs/thread/include",
+        "external/boost/libs/log/include",
+        "external/boost/libs/filesystem/include",
+    ],
+    init_rc: ["someip-vehicle-server.rc"],
+    vendor: true,
+    // Cần chạy với quyền system để bind socket
+    required: ["vsomeip3", "vsomeip3-cfg"],
+}
+
+// Init script — tự động start khi boot
+// File: vendor/vehicle/someip-server/someip-vehicle-server.rc
