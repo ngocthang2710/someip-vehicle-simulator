@@ -1,3 +1,5 @@
+<img width="771" height="551" alt="image" src="https://github.com/user-attachments/assets/7f7b8daa-95b1-4529-960d-8f1b511b092f" />
+
 # 🚗 SOME/IP Vehicle Simulator — Pi4 (Android 15)
 
 ## Tổng quan kiến trúc
